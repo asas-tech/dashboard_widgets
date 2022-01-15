@@ -3,9 +3,7 @@
 </p>        
 
 <p align="center">        
-<a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>        
-<a href="https://github.com/asas-tech/dashboard_widgets/stargazers"><img src="https://img.shields.io/github/stars/asas-tech/dashboard_widgets?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>        
-<a href="https://github.com/asas-tech/dashboard_widgets">       
+<a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>           
 </p>        
 
 A Flutter Dashboard Widget Package contains many customizable widgets that you can find in a typical dashboard.
