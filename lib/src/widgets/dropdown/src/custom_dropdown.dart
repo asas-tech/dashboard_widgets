@@ -8,7 +8,7 @@ class CustomDropDown<T> extends StatefulWidget {
       : super(key: key);
   final T? value;
   final List<T?>? itemList;
-  final ValueChanged<T> onChanged;
+  final ValueChanged<T?>? onChanged;
 
   @override
   State<CustomDropDown<T>> createState() => _CustomDropDownState<T>();
@@ -34,11 +34,19 @@ class _CustomDropDownState<T> extends State<CustomDropDown<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownBelow(
+    return DropdownButtonHideUnderline(
+        child: DropdownButton<T?>(
+      dropdownColor: const Color(0xFFffefd5),
+      borderRadius: BorderRadius.circular(10.0),
       value: widget.value,
-      icon: const Icon(CupertinoIcons.chevron_down),
-      items: dropDownWidgetList,
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(
+        color: Colors.black,
+      ),
       onChanged: widget.onChanged,
-    );
+      items: dropDownWidgetList,
+    ));
   }
 }
