@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/shared/ui_helpers.dart';
+import '../../shared/ui_helpers.dart';
 
 class Loading extends StatelessWidget {
   const Loading({Key? key, this.width, this.color}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../enums/shape.dart';
+import '../../enums/shape.dart';
 
 class CustomAvatar extends StatelessWidget {
   const CustomAvatar(

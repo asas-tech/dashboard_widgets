@@ -1,8 +1,10 @@
 name: dashboard_widgets
-description: A new Flutter package project.
+description: A Flutter Dashboard Widget Package Contains Many Customizable Widgets that you can find in a typical dashboard .
 version: 0.0.1
 homepage: null
-
+repository: https://github.com/asas-tech/dashboard_widgets
+issue_tracker: https://github.com/asas-tech/pubbox/issues
+documentation: https://asas-tech.github.io/pubbox/
 environment:
   sdk: ">=2.15.1 <3.0.0"
   flutter: ">=1.17.0"

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vrouter/vrouter.dart';
 import '../../models/drawer_model.dart';
-import '../../../shared/ui_helpers.dart';
+import '../../shared/ui_helpers.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({

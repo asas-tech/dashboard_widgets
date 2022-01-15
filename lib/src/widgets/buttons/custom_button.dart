@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../enums/button_type.dart';
+import '../../enums/button_type.dart';
 import '../../enums/status.dart';
 
 class CustomButton extends StatefulWidget {
