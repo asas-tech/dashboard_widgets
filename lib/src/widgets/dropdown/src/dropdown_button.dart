@@ -117,13 +117,13 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
     super.initState();
     _fadeOpacity = CurvedAnimation(
       parent: widget.route!.animation!,
-      curve: Interval(0.0, 0.25),
-      reverseCurve: Interval(0.75, 1.0),
+      curve: const Interval(0.0, 0.25),
+      reverseCurve: const Interval(0.75, 1.0),
     );
     _resize = CurvedAnimation(
       parent: widget.route!.animation!,
-      curve: Interval(0.25, 0.5),
-      reverseCurve: Threshold(0.0),
+      curve: const Interval(0.25, 0.5),
+      reverseCurve: const Threshold(0.0),
     );
   }
 
@@ -137,8 +137,8 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
     for (int itemIndex = 0; itemIndex < route.items!.length; ++itemIndex) {
       CurvedAnimation opacity;
       if (itemIndex == route.selectedIndex) {
-        opacity =
-            CurvedAnimation(parent: route.animation!, curve: Threshold(0.0));
+        opacity = CurvedAnimation(
+            parent: route.animation!, curve: const Threshold(0.0));
       } else {
         final double start = (0.5 + (itemIndex + 1) * unit).clamp(0.0, 1.0);
         final double end = (start + 1.5 * unit).clamp(0.0, 1.0);
@@ -178,7 +178,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
             type: MaterialType.transparency,
             textStyle: route.style,
             child: ScrollConfiguration(
-              behavior: _DropdownScrollBehavior(),
+              behavior: const _DropdownScrollBehavior(),
               child: Scrollbar(
                 child: ListView(
                   controller: widget.route!.scrollController,
@@ -219,7 +219,7 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
     final double maxHeight =
         math.max(0.0, constraints.maxHeight - 2 * _kMenuItemHeight);
-    return new BoxConstraints(
+    return BoxConstraints(
       minWidth: itemWidth!,
       maxWidth: itemWidth!,
       minHeight: 0.0,
@@ -246,7 +246,7 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
         left = buttonRect!.left.clamp(0.0, size.width - childSize.width);
         break;
     }
-    return new Offset(left + 15, menuTop + 13);
+    return Offset(left + 15, menuTop + 13);
   }
 
   @override
@@ -333,8 +333,9 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
     double menuTop = (buttonTop - selectedItemOffset) -
         (_kMenuItemHeight - buttonRect!.height) / 2.0;
     const double topPreferredLimit = _kMenuItemHeight;
-    if (menuTop < topPreferredLimit)
+    if (menuTop < topPreferredLimit) {
       menuTop = math.min(buttonTop, topPreferredLimit);
+    }
     double bottom = menuTop + menuHeight;
     final double bottomPreferredLimit = screenHeight - _kMenuItemHeight;
     if (bottom > bottomPreferredLimit) {
@@ -344,10 +345,10 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
 
     if (scrollController == null) {
       double scrollOffset = 0.0;
-      if (preferredMenuHeight > maxMenuHeight)
+      if (preferredMenuHeight > maxMenuHeight) {
         scrollOffset = selectedItemOffset - (buttonTop - menuTop);
-      scrollController =
-          new ScrollController(initialScrollOffset: scrollOffset);
+      }
+      scrollController = ScrollController(initialScrollOffset: scrollOffset);
     }
 
     final TextDirection textDirection = Directionality.of(context);
@@ -356,7 +357,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
       padding: padding!.resolve(textDirection),
     );
 
-    return new MediaQuery.removePadding(
+    return MediaQuery.removePadding(
       context: context,
       removeTop: true,
       removeBottom: true,
@@ -456,7 +457,7 @@ class DropdownBelow<T> extends StatefulWidget {
   final bool isDense;
 
   @override
-  _DropdownBelowState<T> createState() => new _DropdownBelowState<T>();
+  _DropdownBelowState<T> createState() => _DropdownBelowState<T>();
 }
 
 class _DropdownBelowState<T> extends State<DropdownBelow<T>>
@@ -518,14 +519,14 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
             : _kUnalignedMenuMargin;
 
     assert(_dropdownRoute == null);
-    _dropdownRoute = new _DropdownRoute<T>(
+    _dropdownRoute = _DropdownRoute<T>(
       itemWidth: widget.itemWidth,
       items: widget.items,
       buttonRect: menuMargin.resolve(textDirection).inflateRect(itemRect),
       padding: _kMenuItemPadding.resolve(textDirection),
       selectedIndex: -1,
       elevation: widget.elevation,
-      style: widget.itemTextstyle ?? TextStyle(),
+      style: widget.itemTextstyle ?? const TextStyle(),
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
     );
 
@@ -533,7 +534,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
         .then<void>((_DropdownRouteResult<T>? newValue) {
       _dropdownRoute = null;
       if (!mounted || newValue == null) return;
-      if (widget.onChanged != null) widget.onChanged(newValue.result);
+      widget.onChanged(newValue.result);
     });
   }
 
@@ -554,9 +555,9 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
       ));
     }
 
-    Widget result = new DefaultTextStyle(
-      style: widget.boxTextstyle!,
-      child: new Container(
+    Widget result = DefaultTextStyle(
+      style: widget.boxTextstyle ?? const TextStyle(),
+      child: Container(
         decoration: widget.boxDecoration,
         width: widget.boxWidth,
         padding: widget.boxPadding,
@@ -578,7 +579,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
                       children: items,
                     ),
                   ),
-                  VerticalDivider(),
+                  const VerticalDivider(),
                   widget.icon ?? Container()
                 ],
               ),
