@@ -173,7 +173,7 @@ class _BuildHeader extends StatefulWidget {
       required this.isRtl})
       : super(key: key);
   final DrawerItem item;
-  final List<MenuItem>? menuItems;
+  final List<DrawerMenuItem>? menuItems;
   final bool isCollapsed, isForcedUnCollapsed;
   final bool isFirst, isRtl;
 
@@ -317,7 +317,7 @@ class _BuildTile extends StatefulWidget {
       required this.isRtl})
       : super(key: key);
 
-  final MenuItem item;
+  final DrawerMenuItem item;
   final String? mainRoute;
 
   final bool isCollapsed, isForcedUnCollapsed, isRtl;

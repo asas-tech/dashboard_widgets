@@ -6,7 +6,7 @@ class DrawerItem {
   final Widget? child;
   final String routeName;
 
-  final List<MenuItem>? menuItems;
+  final List<DrawerMenuItem>? menuItems;
 
   /// set true if you want the menu to be expanded from the beginning
   final bool isFirst;
@@ -21,17 +21,17 @@ class DrawerItem {
   });
 }
 
-class MenuItem {
+class DrawerMenuItem {
   final String title;
   final String routeName;
   final Widget? child;
-  final List<MenuItem>? menuItems;
+  final List<DrawerMenuItem>? menuItems;
   final IconData? icon;
-  final List<MenuItem>? stackedRoutes;
+  final List<DrawerMenuItem>? stackedRoutes;
   final String? label;
   final Color labelColor;
 
-  MenuItem({
+  DrawerMenuItem({
     required this.title,
     this.icon,
     required this.routeName,
